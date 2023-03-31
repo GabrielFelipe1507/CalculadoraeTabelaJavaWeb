@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"          
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+
+        <title>FP2 - Atividade avaliativa</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h1>Tabela Funcionarios</h1>
+
+        <h:form>
+            <p:growl id="messages"/>
+            <p:menubar>           
+                <p:menuitem value="Calculadora" outcome="/index" icon="pi pi-calculator"/>
+
+                <p:menuitem value="Tabela" outcome="/funcionario/List" icon="pi pi-table"/>
+            </p:menubar> 
+
+            <p:dataTable  id="tabela"
+                          var="funcionario"
+                          value="#{funcionarioController.funcionarios}"
+                          rowKey="funcionario.salario"
+                          paginator="true"
+                          rows="5">
+
+                <p:column headerText="Nome"
+                          sortBy="#{funcionario.nome}"
+                          filterBy="#{funcionario.nome}" 
+                          filterMatchMode="exact">                          
+                    <h:outputText value="#{funcionario.nome}" />
+                </p:column>
+                <p:column headerText="Salario"
+                          sortBy="#{funcionario.salario}"
+                          filterBy="#{funcionario.salario}" 
+                          filterMatchMode="exact">
+                    <h:outputText value="#{funcionario.salario}" />
+                </p:column>
+
+
+            </p:dataTable>
+        </h:form>
+
+    </h:body>
+</html>

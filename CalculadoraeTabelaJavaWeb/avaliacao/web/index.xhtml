@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"          
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>FP2 - Atividade avaliativa</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+
+    <h:body>
+        <h1>Calculadora</h1>
+
+        <h:form>
+            <p:growl id="growl" showDetail="true" />
+
+            <p:menubar>           
+                <p:menuitem value="Calculadora" 
+                            outcome="/index" 
+                            icon="pi pi-calculator"/>
+
+                <p:menuitem value="Tabela" 
+                            outcome="/funcionario/List" 
+                            icon="pi pi-table"/>
+            </p:menubar> 
+
+            <p:panelGrid columns="2">
+
+                <p:outputLabel value="Numero 1:" for="@next"/>
+                <p:inputText value="#{calculadoraController.calculadora.num1}"
+                             required="true"
+                             requiredMessage="Informe o Primeiro Numero"/>
+
+                <p:outputLabel value="Operador:" for="@next"/>
+                <p:inputText value="#{calculadoraController.calculadora.operador}"
+                             required="true"
+                             requiredMessage="Informe o Operador"/>
+
+                <p:outputLabel value="Numero 2:" for="@next"/>
+                <p:inputText value="#{calculadoraController.calculadora.num2}"
+                             required="true"
+                             requiredMessage="Informe o Segundo Numero"/>
+
+                <p:outputLabel />
+
+                <p:commandButton value="Calcular" 
+                                 action="#{calculadoraController.calcular}" 
+                                 update="@form"/>
+
+                <p:outputLabel value="Resultado:" />
+                <p:outputLabel value="#{calculadoraController.calculadora.resultado}" />
+            </p:panelGrid>
+
+        </h:form>
+
+    </h:body>
+</html>
